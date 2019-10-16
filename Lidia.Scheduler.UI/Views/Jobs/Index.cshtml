@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Lidia.Scheduler.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <!-- Start datatable css -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+}
+
+<div class="row">
+    <!-- Primary table start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Jobs</h4>
+                <div class="data-tables datatable-primary">
+                    <table id="dataTable" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.JobId)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Name)</th>
+                                <th>Collection</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.JobUrl)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.CronExpression)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Created)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Status)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <th scope="row">
+                                    <a href="/Jobs/@item.JobId/Details">@Html.DisplayFor(modelItem => item.JobId)</a>
+                                </th>
+                                <td>@Html.DisplayFor(modelıtem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelıtem => item.Collection.Name)</td>
+                                <td>@Html.DisplayFor(modelıtem => item.JobUrl)</td>
+                                <td>@Html.DisplayFor(modelıtem => item.CronExpression)</td>
+                                <td>@Html.DisplayFor(modelıtem => item.Created)</td>
+                                <td>@Html.DisplayFor(modelıtem => item.Status)</td>
+                                <td>
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="mr-3">
+                                            <a href="/Jobs/@item.JobId/Edit" id="@item.JobId" class="text-secondary"><i class="fa fa-edit text-warning"></i></a>
+                                        </li>
+                                        <li class="mr-3">
+                                            <a href="/Jobs/@item.JobId/Details" id="@item.JobId" class="text-secondary"><i class="fa fa-search text-success"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="/Jobs/@item.JobId/Delete" id="@item.JobId" class="text-danger"><i class="ti-trash"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Jobs/Create" class="btn btn-flat btn-success mb-3 pull-right" style="margin-top: 20px;">Create New</a>
+                    <button class="btn btn-flat btn-danger mb-3 pull-right back-btn-details"  style="margin-top: 20px;" onclick="RegisterJobs()">Register Jobs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Primary table end -->
+</div>
+
+
+
+@section scripts{
+
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <script>
+        if ($('#dataTable').length) {
+            $('#dataTable').DataTable({
+                responsive: true
+            });
+        }
+
+        function RegisterJobs() {
+
+            $.ajax({
+                url: '/Jobs/Register',
+                type: "GET"
+            }).done(function (response) {
+                if (response.Type == -99) {
+                    alert('Error while registering jobs!');
+                }
+                else {
+                    alert('Jobs registered successfuly!');
+                }
+            });
+
+        }
+
+    </script>
+
+}
+

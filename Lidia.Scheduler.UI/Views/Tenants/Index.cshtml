@@ -1,0 +1,88 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.TenantListViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+@section head{
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+
+}
+<div class="row">
+    <!-- Primary table start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Tenants</h4>
+                <div class="data-tables datatable-primary">
+                    <table id="dataTable" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>@Html.DisplayNameFor(modelitem => modelitem.Tenants.FirstOrDefault().Tenant.TenantId)</th>
+                                <th>@Html.DisplayNameFor(modelitem => modelitem.Tenants.FirstOrDefault().Tenant.Code)</th>
+                                <th>@Html.DisplayNameFor(modelitem => modelitem.Tenants.FirstOrDefault().Tenant.Name)</th>
+                                <th>@Html.DisplayNameFor(modelitem => modelitem.Tenants.FirstOrDefault().Tenant.Created)</th>
+                                <th>@Html.DisplayNameFor(modelitem => modelitem.Tenants.FirstOrDefault().Tenant.Status)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Tenants)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        <a href="/Tenants/@item.Tenant.TenantId/Details">@Html.DisplayFor(modelItem => item.Tenant.TenantId)</a>
+                                    </th>
+                                    <td>@Html.DisplayFor(modelıtem => item.Tenant.Code)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Tenant.Name)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Tenant.Created)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Tenant.Status)</td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li class="mr-3">
+                                                <a href="/Tenants/@item.Tenant.TenantId/Edit" id="@item.Tenant.TenantId" class="text-secondary"><i class="fa fa-edit text-warning"></i></a>
+                                            </li>
+                                            <li class="mr-3">
+                                                <a href="/Tenants/@item.Tenant.TenantId/Details" id="@item.Tenant.TenantId" class="text-secondary"><i class="fa fa-search text-success"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="/Tenants/@item.Tenant.TenantId/Delete" id="@item.Tenant.TenantId" class="text-danger"><i class="ti-trash"></i></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Tenants/Create" class="btn btn-flat btn-success mb-3 pull-right" style="margin-top: 20px;">Create New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Primary table end -->
+</div>
+
+
+
+@section scripts{
+
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <script>
+        if ($('#dataTable').length) {
+            $('#dataTable').DataTable({
+                responsive: true
+            });
+        }
+    </script>
+
+}

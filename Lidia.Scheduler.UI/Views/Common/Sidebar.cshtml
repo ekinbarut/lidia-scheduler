@@ -1,0 +1,252 @@
+﻿<div class="sidebar-menu">
+    <div class="sidebar-header">
+        <div class="logo">
+            <a href="Home/Index"><img src="~/Content/images/media/logo-horizontal.png" alt="logo"></a>
+            <span class="sidebar-header-v2">SCHEDULER</span>
+        </div>
+    </div>
+    <div class="main-menu">
+        <div class="menu-inner">
+            <nav>
+                <ul class="metismenu" id="menu">
+                    <li class="active">
+                        <a href="/"><i class="ti-home" style="color:#4A89DC;"></i><span>dashboard</span></a>
+                    </li>
+                    @if (User.IsInRole("SystemAdministrator"))
+                    {
+                        <li>
+                            <a href="/Tenants" aria-expanded="true">
+                                <i class="ti-crown"></i><span>
+                                    Tenants
+                                </span>
+                            </a>
+                            <ul class="collapse">
+                                <li>
+                                    <a href="/Tenants" aria-expanded="true">
+                                        <i class="fa fa-clone">
+                                        </i>
+                                        <span>
+                                            Tenant List
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Tenants/Create" aria-expanded="true">
+                                        <i class="ti-plus">
+                                        </i>
+                                        <span>
+                                            New Tenant
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("TenantAdministrator") || User.IsInRole("SystemAdministrator"))
+                    {
+                        <li>
+                            <a href="/Applications" aria-expanded="true">
+                                <i class="ti-desktop"></i><span>
+                                    Applications
+                                </span>
+                            </a>
+                            <ul class="collapse">
+                                <li>
+                                    <a href="/Applications" aria-expanded="true">
+                                        <i class="fa fa-clone">
+                                        </i>
+                                        <span>
+                                            Application List
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Applications/Create" aria-expanded="true">
+                                        <i class="ti-plus">
+                                        </i>
+                                        <span>
+                                            New Applications
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        if (User.IsInRole("SystemAdministrator"))
+                        {
+
+                            <li>
+                                <a href="/Hangfire" aria-expanded="true">
+                                    <i class="ti-bookmark"></i><span>
+                                        Hangfire
+                                    </span>
+                                </a>
+                                <ul class="collapse">
+                                    <li>
+                                        <a href="/Hangfire" aria-expanded="true">
+                                            <i class="ti-info">
+                                            </i>
+                                            <span>
+                                                Hangfire
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Hangfire/Jobs/Enqueued" aria-expanded="true">
+                                            <i class="ti-info">
+                                            </i>
+                                            <span>
+                                                Jobs
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Hangfire/Retries" aria-expanded="true">
+                                            <i class="ti-info">
+                                            </i>
+                                            <span>
+                                                Retries
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Hangfire/Recurring" aria-expanded="true">
+                                            <i class="ti-info">
+                                            </i>
+                                            <span>
+                                                Recurring Jobs
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        <li>
+                            <a href="/Users" aria-expanded="true">
+                                <i class="ti-user"></i><span>
+                                    Users
+                                </span>
+                            </a>
+                            <ul class="collapse">
+                                <li>
+                                    <a href="/Users" aria-expanded="true">
+                                        <i class="fa fa-clone">
+                                        </i>
+                                        <span>
+                                            User List
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Users/Create" aria-expanded="true">
+                                        <i class="ti-plus">
+                                        </i>
+                                        <span>
+                                            New User
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="/Collections" aria-expanded="true">
+                                <i class="ti-files"></i><span>
+                                    Collections
+                                </span>
+                            </a>
+                            <ul class="collapse">
+                                <li>
+                                    <a href="/Collections" aria-expanded="true">
+                                        <i class="fa fa-clone">
+                                        </i>
+                                        <span>
+                                            Collection List
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Collections/Create" aria-expanded="true">
+                                        <i class="ti-plus">
+                                        </i>
+                                        <span>
+                                            New Collection
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("SystemAdministrator") || User.IsInRole("TenantUser") || User.IsInRole("TenantAdministrator"))
+                    {
+
+                        if (User.IsInRole("TenantUser"))
+                        {
+                            <li>
+                                <a href="/Users" aria-expanded="true">
+                                    <i class="ti-user"></i><span>
+                                        Users
+                                    </span>
+                                </a>
+                                <ul class="collapse">
+                                    <li>
+                                        <a href="/Users" aria-expanded="true">
+                                            <i class="fa fa-clone">
+                                            </i>
+                                            <span>
+                                                User List
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Users/Create" aria-expanded="true">
+                                            <i class="ti-plus">
+                                            </i>
+                                            <span>
+                                                New User
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }
+
+                        <li>
+                            <a href="/Jobs" aria-expanded="true">
+                                <i class="ti-timer"></i><span>
+                                    Jobs
+                                </span>
+                            </a>
+                            <ul class="collapse">
+                                <li>
+                                    <a href="/Jobs" aria-expanded="true">
+                                        <i class="fa fa-clone">
+                                        </i>
+                                        <span>
+                                            Job List
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Jobs/Create" aria-expanded="true">
+                                        <i class="ti-plus">
+                                        </i>
+                                        <span>
+                                            New Job
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+

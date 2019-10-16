@@ -1,0 +1,68 @@
+﻿@model Lidia.Scheduler.Models.JobCollection
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">New Collection</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TenantId, "TenantId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("TenantId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TenantId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ApplicationId, "ApplicationId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ApplicationId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 form-group">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Created, new { @class = "form-control form-control-lg", @type = "date", @placeholder = "", @id = "example-text-input-lg", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                    <input hidden name="Created" value="@DateTime.Today" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control", style = "height: 50px;" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <input type="submit" value="Create" style="margin-top: 20px; width:13%;" class="btn btn-flat btn-success mb-3 pull-right" />
+
+    <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right" style="margin-right:30px; margin-top: 20px;">Back to List</a>
+}
+

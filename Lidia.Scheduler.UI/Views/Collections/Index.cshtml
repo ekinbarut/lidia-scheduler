@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Lidia.Scheduler.Models.JobCollection>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <!-- Start datatable css -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+}
+
+<div class="row">
+    <!-- Primary table start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Collections</h4>
+                <div class="data-tables datatable-primary">
+                    <table id="dataTable" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.CollectionId)</th>
+                                    <th>@Html.DisplayNameFor(modelıtem => modelıtem.Name)</th>
+                                    <th>Application Name</th>
+                                    <th>@Html.DisplayNameFor(modelıtem => modelıtem.Created)</th>
+                                    <th>@Html.DisplayNameFor(modelıtem => modelıtem.Status)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        <a href="/Collections/@item.CollectionId/Details">@Html.DisplayFor(modelItem => item.CollectionId)</a>
+                                    </th>
+                                    <td>@Html.DisplayFor(modelıtem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Application.Name)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Created)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Status)</td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li class="mr-3 text-left">
+                                                <a href="/Collections/@item.CollectionId/Edit" id="@item.CollectionId" class="text-secondary"><i class="fa fa-edit text-warning"></i></a>
+                                            </li>
+                                            <li class="mr-3">
+                                                <a href="/Collections/@item.CollectionId/Details" id="@item.CollectionId" class="text-secondary"><i class="fa fa-search text-success"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="/Collections/@item.CollectionId/Delete" id="@item.CollectionId" class="text-danger"><i class="ti-trash"></i></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Collections/Create" class="btn btn-flat btn-success mb-3 pull-right" style="margin-top: 20px;">Create New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Primary table end -->
+</div>
+
+
+
+@section scripts{
+
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <script>
+        if ($('#dataTable').length) {
+            $('#dataTable').DataTable({
+                responsive: true
+            });
+        }
+    </script>
+
+}

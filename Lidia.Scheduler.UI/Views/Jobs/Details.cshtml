@@ -1,0 +1,300 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.JobViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+}
+
+    <div class="row">
+        <div class="col-lg-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div id="accordion1" class="according">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#">
+                                    Job Details
+                                </a>
+                            </div>
+                            <div id="accordion11" class="collapse show" data-parent="#">
+                                <div class="card-body">
+                                    <div class="row p10">
+                                        <div class="col-md-3">
+                                            <b>Collection</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.Collection.Name)
+                                        </div>
+                                        <div class="col-md-3">
+                                            <b>Name</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.Name)
+                                        </div>
+                                    </div>
+                                    <div class="row p10" style="margin-top: 20px;">
+                                        <div class="col-md-3">
+                                            <b>@Html.DisplayNameFor(model => model.Job.CronExpression)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.CronExpression)
+                                        </div>
+                                        <div class="col-md-3">
+                                            <b>@Html.DisplayNameFor(model => model.Job.Created)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.Created)
+                                        </div>
+                                    </div>
+                                    <div class="row p10" style="margin-top: 20px;">
+                                        <div class="col-md-3">
+                                            <b>@Html.DisplayNameFor(model => model.Job.Process)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.Process)
+                                        </div>
+                                        <div class="col-md-3">
+                                            <b>@Html.DisplayNameFor(model => model.Job.Status)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.Status)
+                                        </div>
+                                    </div>
+                                    <div class="row p10" style="margin-top: 20px;">
+                                        <div class="col-md-3">
+                                            <b>@Html.DisplayNameFor(model => model.Job.AppKey)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.AppKey)
+                                        </div>
+                                             <div class="col-md-3">
+                                            <b>@Html.DisplayNameFor(model => model.Job.JobUrl)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.JobUrl)
+                                        </div>
+                                    </div>
+                                    <div class="row p10" style="margin-top: 20px;">
+                                        @*<div class="col-md-3">
+                                            <b>    @Html.DisplayNameFor(model => model.Job.SendSummary)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.SendSummary)
+                                        </div>*@
+
+                                        @*<div class="col-md-3">
+                                            <b>   @Html.DisplayNameFor(model => model.Job.ProcessResult)</b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            @Html.DisplayFor(model => model.Job.ProcessResult)
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (!String.IsNullOrEmpty(Model.Job.Description))
+                        {
+                            <div class="card">
+                                <div class="card-header">
+                                    <a class="card-link" data-toggle="collapse" href="#">
+                                        Job Description
+                                    </a>
+                                </div>
+                                <div id="accordion11" class="collapse show" data-parent="#">
+                                    <div class="card-body">
+                                        @Html.DisplayFor(model => model.Job.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <a href="/Jobs/@Model.Job.JobId/Edit" class="btn btn-flat btn-success mb-3 pull-right submit-btn-details">Edit</a>
+                        <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right back-btn-details">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-2 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="#">
+                        <b class="text-muted mb-3 d-block">Log Type:</b>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" onclick="Filtered('error')">
+                            <label class="custom-control-label" for="customCheck1">Error</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" onclick="Filtered('debug')">
+                            <label class="custom-control-label" for="customCheck2">Debug</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck3" onclick="Filtered('info')">
+                            <label class="custom-control-label" for="customCheck3">Info</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>*@
+        <!-- Primary table start -->
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Job Logs</h4>
+                    <button type="button" class="btn btn-lg btn-primary mb-3 mr-1" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom"
+                            data-content="<div class='custom-control custom-checkbox'><input type='checkbox' class='custom-control-input' id='customCheck1' onclick='filterLogs(this.value);' value='debug'><label class='custom-control-label'for='customCheck1'>Filtre1</label></div> <div class='custom-control custom-checkbox'><input type='checkbox' class='custom-control-input' id='customCheck2' onclick='Filtered('debug')'><label class='custom-control-label'for='customCheck2'>Filtre2</label></div> <div class='custom-control custom-checkbox'><input type='checkbox' class='custom-control-input' id='customCheck3' onclick='Filtered('debug')'><label class='custom-control-label'for='customCheck3'>Filtre3</label></div>">
+                        Filter Logs
+                    </button>
+                    <div class="data-tables datatable-primary">
+                        <div hidden id="partial"></div>
+
+                        <table id="example" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Log Id</th>
+                                    <th>Summary</th>
+                                    <th>Change</th>
+                                    <th>ActivityType</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th>Log Id</th>
+                                    <th>Summary</th>
+                                    <th>Change</th>
+                                    <th>ActivityType</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Primary table end -->
+
+    </div>
+
+
+@section scripts{
+
+    <!-- Start datatable js -->
+    @*<script src="https://code.jquery.com/jquery-3.3.1.js"></script>*@
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+    <script>
+
+
+    //if ($('#dataTable').length) {
+    //    $('#dataTable').DataTable({
+    //        responsive: true
+    //    });
+    //}
+
+        function filterLogs(val) {
+
+            alert(val);
+
+            var jobId = @Model.Job.JobId;
+            debugger;
+
+            $.ajax({
+                async: true,
+                url: "/JobsController/Filtered/" + jobId + "/" + val
+            }).success(function (partialView) {
+                $('#partial').empty();
+                $('#partial').append(partialView);
+            });
+        };
+
+
+        /* Formatting function for row details - modify as you need */
+        function format(d) {
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                '<tr>' +
+                '<td>Full name:</td>' +
+                '<td>' + d.Test1 + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>Extension number:</td>' +
+                '<td>' + d.Test2 + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>Extra info:</td>' +
+                '<td>And any further details here (images etc)...</td>' +
+                '</tr>' +
+                '</table>';
+        }
+
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                "ajax": "/Jobs/Filtered/@Model.Job.JobId",
+                "dataSrc": "data",
+                "columns": [
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": ''
+                    },
+                    { "data": "EntryId" },
+                    { "data": "Summary" },
+                    { "data": "Change" },
+                    { "data": "ActivityType" }
+                ],
+                "order": [[1, 'asc']]
+            });
+
+            // Add event listener for opening and closing details
+            $('#example tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+                var rowId = tr[0].getElementsByClassName("sorting_1")[0].textContent;
+
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+
+                    // Get the details data
+                    $.ajax({
+                        async: true,
+                        url: "/Jobs/@Model.Job.JobId/Logs/" + rowId + "/Details"
+                    }).success(function (response) {
+                        // Open this row
+                        row.child(format(response)).show();
+                        tr.addClass('shown');
+                    });
+                }
+            });
+        });
+
+
+
+    </script>
+
+
+    <style>
+        td.details-control {
+            background: url('../resources/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+
+        tr.shown td.details-control {
+            background: url('../resources/details_close.png') no-repeat center center;
+        }
+    </style>
+}

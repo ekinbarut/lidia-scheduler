@@ -1,0 +1,66 @@
+﻿@model Lidia.Framework.SaaS.Models.Tenant
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">New Tenant</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Code, "Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Code, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 form-group">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 form-group">
+                            @Html.TextBoxFor(model => model.Description, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Culture, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 form-group">
+                            @Html.TextBoxFor(model => model.Culture, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.Culture, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TimeZone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 form-group">
+                            @Html.TextBoxFor(model => model.TimeZone, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.TimeZone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <input hidden value="@DateTime.Today" name="Created" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control", style = "height: 50px;" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <input type="submit" value="Create" style="margin-top: 20px; width:13%;" class="btn btn-flat btn-success mb-3 pull-right" />
+
+    <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right" style="margin-right:30px; margin-top: 20px;">Back to List</a>
+}
+

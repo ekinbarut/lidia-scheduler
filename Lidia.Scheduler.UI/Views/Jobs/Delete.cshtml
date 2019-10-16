@@ -1,0 +1,113 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.JobViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="row">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+                    <strong>Pay Attention! </strong> If you delete this job, All job data will be deleted. Are you sure you want to delete this?
+                </div>
+                <div id="accordion1" class="according">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#">
+                                Job Details
+                            </a>
+                        </div>
+                        <div id="accordion11" class="collapse show" data-parent="#">
+                            <div class="card-body">
+
+                                <div class="row p10">
+                                    <div class="col-md-3">
+                                        <b>Collection</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.Collection.Name)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>Name</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.Name)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Job.CronExpression)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.CronExpression)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Job.Created)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.Created)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Job.Process)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.Process)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Job.Status)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.Status)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Job.AppKey)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.AppKey)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>    @Html.DisplayNameFor(model => model.Job.SendSummary)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.SendSummary)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Job.JobUrl)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.JobUrl)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>   @Html.DisplayNameFor(model => model.Job.ProcessResult)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Job.ProcessResult)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit" value="Delete" class="btn btn-flat btn-danger mb-3 pull-right submit-btn-details" />
+                        <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right back-btn-details">Back to List</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

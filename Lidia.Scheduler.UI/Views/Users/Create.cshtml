@@ -1,0 +1,105 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.CreateUserViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">New User</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserRole.TenantId, "Tenant", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("TenantId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserRole.TenantId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserRole, "Tenant", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select name="RoleId" class="form-control form-control-lg">
+                                <option value="3">SystemAdministrator</option>
+                                <option value="2">TenantAdministrator</option>
+                                <option value="1">TenantUser</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.UserRole.TenantId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Firstname, "Firstname", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Firstname, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Lastname, "Lastname", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Lastname, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg", @type = "email", @placeholder = "", @id = "example-text-input-lg", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, "Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-lg", @type = "password", @placeholder = "", @id = "example-text-input-lg", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gender, "Gender", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select id="Gender" name="Gender" class="form-control">
+                                <option></option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MobileNumber, "MobileNumber", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control form-control-lg", @type = "text", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Birthdate, "Birthdate", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Birthdate, new { @class = "form-control form-control-lg", @type = "date", @placeholder = "", @id = "example-text-input-lg" })
+                            @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <input hidden name="Created" value="@DateTime.Today" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <input type="submit" value="Create" style="margin-top: 20px; width:13%;" class="btn btn-flat btn-success mb-3 pull-right" />
+
+    <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right" style="margin-right:30px; margin-top: 20px;">Back to List</a>
+}

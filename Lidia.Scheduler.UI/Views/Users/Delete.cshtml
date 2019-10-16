@@ -1,0 +1,87 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+                    <strong>Pay Attention! </strong> If you delete this user, all user data will be deleted. Are you sure you want to delete this?
+                </div>
+                <div id="accordion1" class="according">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#">
+                                User Details
+                            </a>
+                        </div>
+                        <div id="accordion11" class="collapse show" data-parent="#">
+                            <div class="card-body">
+                                <div class="row p10">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.User.Id)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.User.Id)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>Ad Soyad</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.User.Firstname)&nbsp;@Html.DisplayFor(model => model.User.Lastname)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.User.UserName)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.User.UserName)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.User.Birthdate)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.User.Birthdate)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.User.MobileNumber)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.User.MobileNumber)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.User.Email)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.User.Email)
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit" value="Delete" class="btn btn-flat btn-danger mb-3 pull-right submit-btn-details" />
+                        <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right back-btn-details">Back to List</a>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

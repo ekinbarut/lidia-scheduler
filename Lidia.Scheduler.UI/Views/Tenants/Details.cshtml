@@ -1,0 +1,182 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.TenantViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section head{
+    <!-- Start datatable css -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+}
+<div class="row">
+    <div class="col-lg-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div id="accordion1" class="according">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#">
+                                Tenant Details
+                            </a>
+                        </div>
+                        <div id="accordion11" class="collapse show" data-parent="#">
+                            <div class="card-body">
+                                <div class="row p10">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.TenantId)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.TenantId)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.Name)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.Name)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.Code)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.Code)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.Culture)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.Culture)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.TimeZone)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.TimeZone)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.Created)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.Created)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.Updated)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.Updated)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Tenant.Status)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Tenant.Status)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (!String.IsNullOrEmpty(Model.Tenant.Description))
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#">
+                                    Tenant Description
+                                </a>
+                            </div>
+                            <div id="accordion11" class="collapse show" data-parent="#">
+                                <div class="card-body">
+                                    @Html.DisplayFor(model => model.Tenant.Description)
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <a href="/Tenants/Edit/@Model.Tenant.TenantId" class="btn btn-flat btn-success mb-3 pull-right submit-btn-details">Edit</a>
+                    <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right back-btn-details">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Primary table start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Tenant Applications</h4>
+                <div class="data-tables datatable-primary">
+                    <table id="dataTable" class="text-center">
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Tenant.Applications.FirstOrDefault().Id)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Tenant.Applications.FirstOrDefault().Name)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Tenant.Applications.FirstOrDefault().Domain)</th>
+                                <th>@Html.DisplayNameFor(modelıtem => modelıtem.Tenant.Applications.FirstOrDefault().Status)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Tenant.Applications)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        <a href="/Applications/@item.Tenant.TenantId/Details">@Html.DisplayFor(modelItem => item.Id)</a>
+                                    </th>
+                                    <td>@Html.DisplayFor(modelıtem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Domain)</td>
+                                    <td>@Html.DisplayFor(modelıtem => item.Status)</td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li class="mr-3 text-left">
+                                                <a href="/Applications/@item.Id/Edit" id="@item.Id" class="text-secondary"><i class="fa fa-edit text-warning"></i></a>
+                                            </li>
+                                            <li class="mr-3">
+                                                <a href="/Applications/@item.Id/Details" id="@item.Id" class="text-secondary"><i class="fa fa-search text-success"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="/Applications/@item.Id/Delete" id="@item.Id" class="text-danger"><i class="ti-trash"></i></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Primary table end -->
+</div>
+
+
+@section scripts{
+
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <script>
+        if ($('#dataTable').length) {
+            $('#dataTable').DataTable({
+                responsive: true
+            });
+        }
+    </script>
+
+}

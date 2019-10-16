@@ -1,0 +1,30 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.JobViewModel
+
+<table id="dataTable" class="text-center">
+    <thead class="text-capitalize">
+        <tr>
+            <th>@Html.DisplayNameFor(modelıtem => modelıtem.Job.Log.FirstOrDefault().EntryId)</th>
+            <th>@Html.DisplayNameFor(modelıtem => modelıtem.Job.Log.FirstOrDefault().Job)</th>
+            <th>@Html.DisplayNameFor(modelıtem => modelıtem.Job.Log.FirstOrDefault().Summary)</th>
+            <th>@Html.DisplayNameFor(modelıtem => modelıtem.Job.Log.FirstOrDefault().Details)</th>
+            <th>@Html.DisplayNameFor(modelıtem => modelıtem.Job.Log.FirstOrDefault().Change)</th>
+            <th>@Html.DisplayNameFor(modelıtem => modelıtem.Job.Log.FirstOrDefault().ActivityType)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Job.Log)
+        {
+            <tr>
+                <th scope="row">
+                    <a href="/Jobs/@item.JobId/Details">@Html.DisplayFor(modelItem => item.EntryId)</a>
+                </th>
+                <td>@Html.DisplayFor(modelıtem => item.Job.Name)</td>
+                <td>@Html.DisplayFor(modelıtem => item.Summary)</td>
+                <td>@Html.DisplayFor(modelıtem => item.Details)</td>
+                <td>@Html.DisplayFor(modelıtem => item.Change)</td>
+                <td>@Html.DisplayFor(modelıtem => item.ActivityType)</td>
+
+            </tr>
+        }
+    </tbody>
+</table>

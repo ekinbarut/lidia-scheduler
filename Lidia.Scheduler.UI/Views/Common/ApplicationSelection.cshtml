@@ -1,0 +1,17 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.ApplicationSelectionViewModel
+
+<div class="ib topbar-dropdown">
+    @*<label for="applicationSelection" class="control-label pr10 fs11 text-muted">Active Application</label>*@
+    <select id="applicationSelection" class="hidden">
+        @foreach (var app in Model.CurrentTenant.Applications)
+        {
+            <option value="@app.Id" @(Model.CurrentApplication.Id == app.Id ? "selected" : "")>@app.Name</option>
+        }
+    </select>
+</div>
+@*<div class="ml15 ib va-m" id="toggle_sidemenu_r">
+    <a href="#" class="pl5">
+        <i class="fa fa-sign-in fs22 text-primary"></i>
+        <span class="badge badge-hero badge-danger">3</span>
+    </a>
+</div>*@

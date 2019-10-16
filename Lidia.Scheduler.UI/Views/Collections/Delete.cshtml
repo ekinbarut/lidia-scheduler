@@ -1,0 +1,77 @@
+﻿@model Lidia.Scheduler.UI.Models.ViewModels.JobCollectionViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+                    <strong>Pay Attention! </strong> If you delete this collection, All collection data will be deleted. Are you sure you want to delete this?
+                </div>
+                <div id="accordion1" class="according">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#">
+                                Collection Details
+                            </a>
+                        </div>
+                        <div id="accordion11" class="collapse show" data-parent="#">
+                            <div class="card-body">
+
+                                <div class="row p10">
+                                    <div class="col-md-3">
+                                        <b>Tenant Name</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Collection.Tenant.Name)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>Application Name</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Collection.Application.Name)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>Collection Name</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Collection.Name)
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Collection.Created)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Collection.Created)
+                                    </div>
+                                </div>
+                                <div class="row p10" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        <b>@Html.DisplayNameFor(model => model.Collection.Status)</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DisplayFor(model => model.Collection.Status)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit" value="Delete" class="btn btn-flat btn-danger mb-3 pull-right submit-btn-details" />
+                        <a href="@HttpContext.Current.Request.UrlReferrer" class="btn btn-flat btn-secondary mb-3 pull-right back-btn-details">Back to List</a>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{CB7D3E99-D7A0-4F67-96C4-42ED443BE24D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.API", "API\Lidia.Scheduler.API\Lidia.Scheduler.API.csproj", "{3FC115F2-C2B0-4446-95F4-A7CE9A92317E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.API.Models", "API\Lidia.Scheduler.API.Models\Lidia.Scheduler.API.Models.csproj", "{B3EB5315-5781-469C-BF3A-B233930640E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PM", "PM", "{FF5644BB-C0D7-43E6-8019-F18D3B15F755}"
+	ProjectSection(SolutionItems) = preProject
+		PM\Notes.txt = PM\Notes.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{C4721A4B-F1C0-45B1-A25A-D7980CEB1424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.SDK.Net.452", "SDK\Lidia.Scheduler.SDK.Net.452\Lidia.Scheduler.SDK.Net.452.csproj", "{31813F1C-9EA2-4552-B499-897ED1C3884C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler", "Lidia.Scheduler\Lidia.Scheduler.csproj", "{B5E01CA2-C5D7-453E-B924-D14B9D026CF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.Common.Models", "Lidia.Scheduler.Common.Models\Lidia.Scheduler.Common.Models.csproj", "{B8434716-2BBB-4A9F-AA61-03F080B2B5E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.Models", "Lidia.Scheduler.Models\Lidia.Scheduler.Models.csproj", "{AFC401C0-03C3-4BAB-B469-861659033652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.UI", "Lidia.Scheduler.UI\Lidia.Scheduler.UI.csproj", "{63778E1B-94C4-46D8-9788-A6EB8BA3DEF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidia.Scheduler.Test.API", "Lidia.Scheduler.Test.API\Lidia.Scheduler.Test.API.csproj", "{D9952DED-37A5-43AD-A7A5-43373FBC5593}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FC115F2-C2B0-4446-95F4-A7CE9A92317E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC115F2-C2B0-4446-95F4-A7CE9A92317E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC115F2-C2B0-4446-95F4-A7CE9A92317E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC115F2-C2B0-4446-95F4-A7CE9A92317E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3EB5315-5781-469C-BF3A-B233930640E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3EB5315-5781-469C-BF3A-B233930640E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3EB5315-5781-469C-BF3A-B233930640E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3EB5315-5781-469C-BF3A-B233930640E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31813F1C-9EA2-4552-B499-897ED1C3884C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31813F1C-9EA2-4552-B499-897ED1C3884C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31813F1C-9EA2-4552-B499-897ED1C3884C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31813F1C-9EA2-4552-B499-897ED1C3884C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E01CA2-C5D7-453E-B924-D14B9D026CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E01CA2-C5D7-453E-B924-D14B9D026CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E01CA2-C5D7-453E-B924-D14B9D026CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E01CA2-C5D7-453E-B924-D14B9D026CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8434716-2BBB-4A9F-AA61-03F080B2B5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8434716-2BBB-4A9F-AA61-03F080B2B5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8434716-2BBB-4A9F-AA61-03F080B2B5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8434716-2BBB-4A9F-AA61-03F080B2B5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC401C0-03C3-4BAB-B469-861659033652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC401C0-03C3-4BAB-B469-861659033652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC401C0-03C3-4BAB-B469-861659033652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC401C0-03C3-4BAB-B469-861659033652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63778E1B-94C4-46D8-9788-A6EB8BA3DEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63778E1B-94C4-46D8-9788-A6EB8BA3DEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63778E1B-94C4-46D8-9788-A6EB8BA3DEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63778E1B-94C4-46D8-9788-A6EB8BA3DEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9952DED-37A5-43AD-A7A5-43373FBC5593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9952DED-37A5-43AD-A7A5-43373FBC5593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9952DED-37A5-43AD-A7A5-43373FBC5593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9952DED-37A5-43AD-A7A5-43373FBC5593}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FC115F2-C2B0-4446-95F4-A7CE9A92317E} = {CB7D3E99-D7A0-4F67-96C4-42ED443BE24D}
+		{B3EB5315-5781-469C-BF3A-B233930640E4} = {CB7D3E99-D7A0-4F67-96C4-42ED443BE24D}
+		{31813F1C-9EA2-4552-B499-897ED1C3884C} = {C4721A4B-F1C0-45B1-A25A-D7980CEB1424}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2332C6F2-00D5-4C3A-BA4E-74939B822A33}
+	EndGlobalSection
+EndGlobal
